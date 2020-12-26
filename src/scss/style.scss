@@ -1,0 +1,13 @@
+@import "./bootstrap/custom";
+@import "~bootstrap/scss/bootstrap";
+@import "./slick-slider/slick";
+@import "./slick-slider/slick-theme";
+@import "./variables/variables";
+@import "./header/header";
+
+@import "./media/style-media1400";
+
+.container {
+    max-width: 1600px;
+    padding: 0;
+}

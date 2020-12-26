@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@import "~bootstrap/scss/variables";
+
+$slick-font-path: "./fonts/" !default;
+$slick-css-path: "../img/svg/";
+$slick-loader-path: "./" !default;
+$slick-arrow-color: $white !default;
+$slick-dot-color: $black !default;
+$slick-dot-color-active: $slick-dot-color !default;
+$slick-dot-size: 6px !default;
+$slick-opacity-default: 1 !default;
+$slick-opacity-on-hover: 0.75 !default;
+$slick-opacity-not-active: 0.25 !default;
+
+@function slick-image-url($url) {
+  @if function-exists(image-url) {
+    @return image-url($url);
+  } @else {
+    @return url($slick-loader-path + $url);
+  }
+}
+
+/* Arrows */
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  display: block;
+  height: 42px;
+  width: 42px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: transparent;
+  color: $white;
+  top: 488px;
+  transform: translate(0, -50%) !important;
+  padding: 0;
+  border: 1px solid $white;
+  border-radius: 50%;
+  outline: none;
+  &:hover {
+    height: 57px;
+    width: 57px;
+    transform: translate(0, -50%) !important;
+    outline: none;
+    background: $blue;
+    border: none;
+    &:before {
+      width: 57px;
+      height: 57px;
+      opacity: $slick-opacity-on-hover;
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  &.slick-disabled:before {
+    opacity: $slick-opacity-not-active;
+  }
+  &:before {
+    content: "";
+    display: block;
+    background: url($slick-css-path + "slick-arrow.svg") center no-repeat;
+    width: 42px;
+    height: 42px;
+    opacity: $slick-opacity-default;
+  }
+}
+
+.slick-prev {
+  right: 17.31%;
+  z-index: 1;
+}
+
+.slick-next {
+  left: 82.68%;
+  z-index: 1;
+  &:before {
+    transform: rotateY(180deg);
+  }
+}
